@@ -1,0 +1,439 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f4f7fc;
+  --color-primary-100: #e3ebf7;
+  --color-primary-200: #c6d7ef;
+  --color-primary-300: #9cbde4;
+  --color-primary-400: #669ad2;
+  --color-primary-500: #3b74b8;
+  --color-primary-600: #003366;
+  --color-primary-700: #0a2540;
+  --color-primary-800: #081d33;
+  --color-primary-900: #061626;
+  --color-primary-950: #030b14;
+
+  --color-gold-50: #fefdf7;
+  --color-gold-100: #fdf8e8;
+  --color-gold-200: #faf0cc;
+  --color-gold-300: #f4e39f;
+  --color-gold-400: #ecd06c;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #b89228;
+  --color-gold-700: #937121;
+  --color-gold-800: #785a20;
+  --color-gold-900: #654a1f;
+
+  --color-slate-850: #081d33;
+  --color-slate-925: #051322;
+}
+
+@layer base {
+  * {
+    border-color: rgba(226, 232, 240, 0.8);
+  }
+  body {
+    font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Strict Geometric Navigation & Active State Harmony Utilities */
+@utility nav-item-geometric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.625rem;
+  text-align: right;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  transition: all 150ms ease-in-out;
+  border: 1px solid transparent;
+}
+
+@utility nav-item-geometric-active {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: #f4e39f;
+  border-color: rgba(212, 175, 55, 0.45);
+  font-weight: 800;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+@utility nav-item-geometric-inactive {
+  color: #cbd5e1;
+  font-weight: 600;
+  &:hover {
+    color: #ffffff;
+    background-color: rgba(0, 51, 102, 0.6);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+}
+
+@utility nav-tab-geometric {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.4375rem 0.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 150ms ease-in-out;
+}
+
+@utility nav-tab-geometric-active {
+  background-color: #003366;
+  color: #ffffff;
+  border: 1px solid #d4af37;
+  box-shadow: 0 1px 3px 0 rgba(10, 37, 64, 0.3);
+}
+
+@utility nav-tab-geometric-inactive {
+  color: #475569;
+  background-color: transparent;
+  &:hover {
+    color: #0a2540;
+    background-color: rgba(244, 247, 252, 0.9);
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 10mm;
+  }
+
+  body.thermal-mode @page {
+    size: 80mm auto;
+    margin: 0mm;
+  }
+
+  body, html, #root, div, main {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static !important;
+    background: white !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+  }
+
+  body.thermal-mode {
+    width: 80mm !important;
+    max-width: 80mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .no-print,
+  aside,
+  header,
+  nav,
+  button,
+  .no-print * {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .shadow-xs, .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl {
+    box-shadow: none !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  .printable-receipt {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Custom scrollbars for SAP enterprise tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.8);
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE (وضع التباين العالي للمستودعات ومحطات العمل ذات الإضاءة المتغيرة)
+   ========================================================================== */
+html.high-contrast,
+.high-contrast {
+  --tw-border-opacity: 1 !important;
+  color-scheme: light;
+}
+
+/* High Contrast Base Elements */
+html.high-contrast body {
+  background-color: #f1f5f9 !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+  text-rendering: optimizeLegibility;
+}
+
+/* Crisp & Reinforced Container Borders */
+html.high-contrast .border,
+html.high-contrast .border-t,
+html.high-contrast .border-b,
+html.high-contrast .border-l,
+html.high-contrast .border-r,
+html.high-contrast .border-slate-100,
+html.high-contrast .border-slate-200,
+html.high-contrast .border-slate-300 {
+  border-color: #0f172a !important;
+}
+
+html[data-bold-borders="true"] .border,
+html[data-bold-borders="true"] .border-slate-200,
+html[data-bold-borders="true"] .border-slate-300 {
+  border-width: 1.5px !important;
+  border-color: #000000 !important;
+}
+
+/* High Contrast Cards & Panels */
+html.high-contrast .bg-white {
+  background-color: #ffffff !important;
+  border-color: #0f172a !important;
+  box-shadow: 0 2px 0 0 #0f172a !important;
+}
+
+html.high-contrast .bg-slate-50,
+html.high-contrast .bg-slate-100 {
+  background-color: #e2e8f0 !important;
+  border-color: #0f172a !important;
+}
+
+/* Deep Black Text for WCAG AAA Compliance under Harsh Warehouse Light */
+html.high-contrast .text-slate-900,
+html.high-contrast .text-slate-800,
+html.high-contrast .text-slate-700,
+html.high-contrast .text-slate-600 {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+html.high-contrast .text-slate-500,
+html.high-contrast .text-slate-400 {
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
+/* High Contrast Inputs & Warehouse Barcode Fields */
+html.high-contrast input,
+html.high-contrast select,
+html.high-contrast textarea {
+  border: 2px solid #0f172a !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+html.high-contrast input:focus,
+html.high-contrast select:focus,
+html.high-contrast textarea:focus,
+html[data-scanner-optimized="true"] input:focus {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 2px !important;
+  border-color: #1d4ed8 !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25) !important;
+}
+
+/* High-Visibility Tables & Grid Rows */
+html.high-contrast table th {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  border-bottom: 2px solid #000000 !important;
+}
+
+html.high-contrast table td {
+  border-bottom: 1.5px solid #0f172a !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+html.high-contrast table tbody tr:nth-child(even) {
+  background-color: #f8fafc !important;
+}
+
+html.high-contrast table tbody tr:hover {
+  background-color: #e0f2fe !important;
+}
+
+/* Vivid High-Contrast Status Badges for Warehouses */
+html.high-contrast .bg-emerald-50,
+html.high-contrast .bg-emerald-100 {
+  background-color: #059669 !important;
+  color: #ffffff !important;
+  border: 1px solid #047857 !important;
+}
+
+html.high-contrast .bg-rose-50,
+html.high-contrast .bg-rose-100 {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border: 1px solid #b91c1c !important;
+}
+
+html.high-contrast .bg-amber-50,
+html.high-contrast .bg-amber-100 {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+  border: 1px solid #b45309 !important;
+}
+
+html.high-contrast .bg-blue-50,
+html.high-contrast .bg-blue-100 {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #1d4ed8 !important;
+}
+
+/* Buttons in High Contrast */
+html.high-contrast button {
+  border-color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* Preset: WAREHOUSE_GLARE (Anti-glare sunlight & intense lamp mode) */
+html.high-contrast[data-contrast-preset="WAREHOUSE_GLARE"] {
+  filter: contrast(110%);
+}
+
+/* Preset: LOW_LIGHT (Dim warehouse shelves and night shifts) */
+html.high-contrast[data-contrast-preset="LOW_LIGHT"] body {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+html.high-contrast[data-contrast-preset="LOW_LIGHT"] .bg-white {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #475569 !important;
+}
+
+html.high-contrast[data-contrast-preset="LOW_LIGHT"] .text-slate-900,
+html.high-contrast[data-contrast-preset="LOW_LIGHT"] .text-slate-800,
+html.high-contrast[data-contrast-preset="LOW_LIGHT"] .text-slate-700 {
+  color: #ffffff !important;
+}
+
+/* Large Warehouse Font Attribute */
+html[data-warehouse-font="true"] .font-mono,
+html[data-warehouse-font="true"] table td,
+html[data-warehouse-font="true"] input {
+  font-size: 1.05em !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* --- Theme & Style Studio Dynamic Custom Properties --- */
+:root {
+  --theme-primary: #003366;
+  --theme-primary-hover: #0a2540;
+  --theme-secondary: #d4af37;
+  --theme-bg: #f8fafc;
+  --theme-card-bg: #ffffff;
+  --theme-text: #0f172a;
+  --theme-text-muted: #64748b;
+  --theme-link: #003366;
+  --theme-warning: #d97706;
+  --theme-error: #dc2626;
+  --theme-success: #059669;
+  --theme-sidebar-bg: #081d33;
+  --theme-header-bg: #0a2540;
+  --theme-border-color: #e2e8f0;
+  --theme-font-family: 'Cairo', system-ui, sans-serif;
+  --theme-font-size: 14px;
+  --theme-heading-scale: 1.25;
+  --theme-line-height: 1.5;
+  --theme-table-radius: 12px;
+  --theme-button-radius: 12px;
+  --theme-card-radius: 16px;
+  --theme-border-width: 1px;
+  --theme-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --theme-zoom: 1;
+}
+
+.theme-btn-primary {
+  background-color: var(--theme-primary) !important;
+  color: #ffffff !important;
+  border-radius: var(--theme-button-radius) !important;
+  transition: all 150ms ease-in-out;
+}
+
+.theme-btn-primary:hover {
+  background-color: var(--theme-primary-hover, var(--theme-primary)) !important;
+  filter: brightness(0.95);
+}
+
+.theme-btn-secondary {
+  background-color: var(--theme-secondary) !important;
+  color: #0f172a !important;
+  border-radius: var(--theme-button-radius) !important;
+  font-weight: 700;
+  transition: all 150ms ease-in-out;
+}
+
+.theme-card {
+  background-color: var(--theme-card-bg) !important;
+  border-radius: var(--theme-card-radius) !important;
+  box-shadow: var(--theme-shadow) !important;
+  border: var(--theme-border-width) solid var(--theme-border-color) !important;
+}
+
+.theme-table-container {
+  border-radius: var(--theme-table-radius) !important;
+  border: var(--theme-border-width) solid var(--theme-border-color) !important;
+  box-shadow: var(--theme-shadow) !important;
+  overflow: hidden;
+}
+
+.theme-input {
+  border-radius: var(--theme-button-radius) !important;
+  border: var(--theme-border-width) solid var(--theme-border-color) !important;
+}
+
+.theme-badge-primary {
+  background-color: var(--theme-primary) !important;
+  color: #ffffff !important;
+  border-radius: var(--theme-button-radius) !important;
+}
+
+.theme-badge-secondary {
+  background-color: var(--theme-secondary) !important;
+  color: #0f172a !important;
+  border-radius: var(--theme-button-radius) !important;
+}
+
+
+

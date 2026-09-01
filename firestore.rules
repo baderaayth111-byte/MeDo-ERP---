@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && (
+        getUserData().role == 'ADMIN' || 
+        request.auth.token.email == 'admin@medo-erp.com'
+      );
+    }
+
+    function isActiveUser() {
+      return isAuthenticated() && (
+        !('isActive' in getUserData()) || getUserData().isActive == true
+      );
+    }
+
+    function getUserRole() {
+      return getUserData().role;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAdmin() || (isAuthenticated() && request.auth.uid == userId);
+      allow delete: if isAdmin();
+    }
+
+    // Default allow read/write for authenticated active users across general ERP collections
+    match /{document=**} {
+      allow read, write: if isAuthenticated() && isActiveUser();
+    }
+  }
+}

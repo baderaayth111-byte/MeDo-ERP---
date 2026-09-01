@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Remix MeDo ERP - نظام المحاسبة والمالية المتكامل SAP S/4HANA",
+  "description": "نظام محاسبي ومالي متكامل يشمل:\n​إدارة الحسابات المالية (FI) والمحاسبة الإدارية والتكاليف (CO).\n​إدارة الأصول والتقارير المالية الدقيقة.\n​دعم متعدد للعملات والتوافق التام مع البيئة اليمنية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

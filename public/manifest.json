@@ -1,0 +1,48 @@
+{
+  "name": "نظام MeDo ERP المؤسسي المحاسبي",
+  "short_name": "MeDo ERP",
+  "description": "نظام تخطيط موارد المؤسسات والمحاسبة والمخازن ونقاط البيع مع دعم العمل بدون إنترنت 100%",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#0A2540",
+  "theme_color": "#0A2540",
+  "orientation": "any",
+  "dir": "rtl",
+  "lang": "ar",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230A2540'/%3E%3Cstop offset='100%25' stop-color='%23003366'/%3E%3C/linearGradient%3E%3ClinearGradient id='goldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23F3E5AB'/%3E%3Cstop offset='50%25' stop-color='%23D4AF37'/%3E%3Cstop offset='100%25' stop-color='%23AA7C11'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='102' fill='url(%23bgGrad)'/%3E%3Ccircle cx='256' cy='110' r='24' fill='url(%23goldGrad)'/%3E%3Cpath d='M140 370V170h48l68 110 68-110h48v200h-44V240l-60 95h-24l-60-95v130h-44z' fill='url(%23goldGrad)'/%3E%3Ctext x='256' y='440' font-family='Arial, sans-serif' font-size='44' font-weight='900' fill='%23ffffff' text-anchor='middle' letter-spacing='4'%3EMeDo ERP%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230A2540'/%3E%3Cstop offset='100%25' stop-color='%23003366'/%3E%3C/linearGradient%3E%3ClinearGradient id='goldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23F3E5AB'/%3E%3Cstop offset='50%25' stop-color='%23D4AF37'/%3E%3Cstop offset='100%25' stop-color='%23AA7C11'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='102' fill='url(%23bgGrad)'/%3E%3Ccircle cx='256' cy='110' r='24' fill='url(%23goldGrad)'/%3E%3Cpath d='M140 370V170h48l68 110 68-110h48v200h-44V240l-60 95h-24l-60-95v130h-44z' fill='url(%23goldGrad)'/%3E%3Ctext x='256' y='440' font-family='Arial, sans-serif' font-size='44' font-weight='900' fill='%23ffffff' text-anchor='middle' letter-spacing='4'%3EMeDo ERP%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "نقاط البيع والكاشير POS",
+      "short_name": "الكاشير",
+      "url": "/?module=pos",
+      "description": "فتح نقطة البيع السريعة بدون إنترنت"
+    },
+    {
+      "name": "الأستاذ العام وقيود اليومية",
+      "short_name": "القيود",
+      "url": "/?module=general-ledger",
+      "description": "تسجيل القيود المحاسبية"
+    },
+    {
+      "name": "إدارة المخزون والمستودعات",
+      "short_name": "المخازن",
+      "url": "/?module=inventory",
+      "description": "فحص وإدارة جرد الأصناف"
+    }
+  ]
+}
